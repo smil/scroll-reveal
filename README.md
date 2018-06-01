@@ -3,4 +3,4 @@
 
 
 simple-demo1.html为自己写的一个简单的demo
-index.html和index2.html是下载下来的滑动效果更多的demo
+index.html和index2.html是下载下来的滑动效果更多的demo，详见http://www.dowebok.com/134.html
