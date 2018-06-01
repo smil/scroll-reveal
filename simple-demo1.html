@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="index.css">
+<style type="text/css">
+
+	.float-top{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    font-size: 5vw;
+    text-align: center;
+    background: #fff;
+    z-index: 99;
+		transform: translateY(-100%);
+    transition: transform 0.2s linear 0s;
+	}
+
+	.scroll-before{
+	  transform: translatey(300px);
+	  opacity: 0;
+	  transition: all 1s ease-in-out 0.3s;
+	}
+	.scroll-after{
+	  transform: translatey(0);
+	  opacity: 1;
+	  transition: all 1s ease-in-out 0.3s;
+	}
+
+</style>
+</head>
+
+<body class="dowebok">
+
+<div class="main-body">
+	<div class="float-top">I'm header</div> 
+	<ul class="list-ul">
+		<li class="scroll-before"><img src="images/1.jpg" alt=""></li>
+		<li class="scroll-before"><img src="images/2.jpg" alt=""></li>
+		<li class="scroll-before"><img src="images/3.jpg" alt=""></li>
+		<li class="scroll-before"><img src="images/4.jpg" alt=""></li>
+		<li class="scroll-before"><img src="images/5.jpg" alt=""></li>
+		<li class="scroll-before"><img src="images/6.jpg" alt=""></li>
+		<li >
+			<div class="scroll-before" id="target">
+				<img src="images/14.jpg" alt="">
+			</div>
+			<p class="scroll-before" style="color: #fff;font-size: 5vw">出现头部信息</p>
+		</li>
+		<li class="scroll-before"><img src="images/7.jpg" alt=""></li>
+		<li class="scroll-before"><img src="images/8.jpg" alt=""></li>
+		<li class="scroll-before"><img src="images/9.jpg" alt=""></li>
+		<li class="scroll-before"><img src="images/10.jpg" alt=""></li>
+		<li class="scroll-before"><img src="images/11.jpg" alt=""></li>
+		<li class="scroll-before"><img src="images/12.jpg" alt=""></li>
+		<li >
+			<div class="scroll-before">
+				<img src="images/14.jpg" alt="">
+			</div>
+			<p class="scroll-before" style="color: #fff;font-size: 5vw">23fhkdnvwwwwwwwwwwwwwwwww</p>
+		</li>
+		<li class="scroll-before"><img src="images/13.jpg" alt=""></li>
+		<li class="scroll-before"><img src="images/14.jpg" alt=""></li>
+		<li class="scroll-before"><img src="images/15.jpg" alt=""></li>
+		<li class="scroll-before"><img src="images/16.jpg" alt=""></li>
+		<li class="scroll-before"><img src="images/9.jpg" alt=""></li>
+		<li class="scroll-before"><img src="images/10.jpg" alt=""></li>
+		<li class="scroll-before"><img src="images/11.jpg" alt=""></li>
+		<li class="scroll-before"><img src="images/12.jpg" alt=""></li>
+		<li class="scroll-before"><img src="images/13.jpg" alt=""></li>
+		<li >
+			<div class="scroll-before">
+				<img src="images/14.jpg" alt="">
+			</div>
+			<p class="scroll-before" style="color: #fff;font-size: 5vw">23fhkdnvwwwwwwwwwwwwwwwww</p>
+		</li>
+		<li class="scroll-before"><img src="images/15.jpg" alt=""></li>
+		<li class="scroll-before"><img src="images/16.jpg" alt=""></li>
+	</ul>
+</div>
+</body>
+<script type="text/javascript">
+
+var screenHeight = window.screen.height;
+var liNode = [...document.querySelectorAll('.scroll-before')], header = document.getElementsByClassName('float-top');
+var index;
+var targetOffsetTop = document.querySelector('#target').offsetTop;
+
+window.onload = function(){
+
+	for(var i=0,len=liNode.length;i<len;i++){
+		if(screenHeight >= liNode[i].offsetTop){
+			index = i + 1;
+			liNode[i].className = "scroll-after"
+		}else{
+			return
+		}
+	}
+}
+
+function scrollHandler(){
+	var scrollY = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+
+	if(scrollY >= targetOffsetTop){
+		header[0].style.transform = "translateY(0)";
+	}else{
+		header[0].style.transform = "translateY(-100%)";
+	}
+
+
+	for(var i=index,len=liNode.length;i<len;i++){
+		if(screenHeight + scrollY >= liNode[i].offsetTop){
+			liNode[i].className = "scroll-after"
+		}
+	}
+
+
+
+}
+document.addEventListener('scroll', scrollHandler, false);
+
+	
+</script>
+</html>
